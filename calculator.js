@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 /**
  * Declare a function named `calculatorModule`
  * this function will have two private variables declared inside of it.
@@ -5,6 +6,82 @@
  * @variable PRIVATE { Number } `total`
  * @return {object} `calculator` object that can be used
  */
+ //use let for the two private variables
+
+ function calculatorModule(){
+
+  let memory = 0;
+  
+  let total = 0;
+
+  function load(num){
+    validate(num);
+    total = num;
+    return total;
+  }
+
+  function getTotal (){
+    return total;
+  }
+
+  function add (num){
+    validate(num);
+    total += num;
+    return total;
+  }
+
+  function subtract (num){
+    validate(num);
+    total -= num;
+    return total;
+  }
+
+  function multiply (num){
+    validate(num);
+    total *= num;
+    return total;
+  }
+
+  function divide (num){
+    validate(num);
+    total /= num;
+    return total;
+  }
+
+  function recallMemory(){
+    return memory;
+  }
+
+  function saveMemory(){
+    memory = total;
+    return memory;
+  }
+
+  function clearMemory(){
+    memory = 0;
+    return memory;
+  }
+
+  function validate(num){
+    if (typeof num !== 'number'){
+      throw new Error ("Please enter a valid number.");
+    }
+  }
+
+  return {
+    load: load,
+    getTotal: getTotal,
+    add: add,
+    subtract: subtract,
+    multiply: multiply,
+    divide: divide,
+    recallMemory: recallMemory,
+    saveMemory: saveMemory,
+    clearMemory: clearMemory
+  };
+}
+
+
 
 
   /**
